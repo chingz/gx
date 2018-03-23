@@ -57,6 +57,12 @@ class UserOverview extends React.Component<UserOverviewProps, UserOverviewState>
     this.state = { username: props.username };
   }
 
+  componentWillMount() {
+    if (this.state.username) {
+      this.props.getUserByName(this.state.username);
+    }
+  }
+
   componentWillReceiveProps(props: UserOverviewProps) {
     if (this.state.username !== props.username) {
       this.setState({ username: props.username });
